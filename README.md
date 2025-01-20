@@ -1,158 +1,70 @@
-# Module 13 Challenge: Candidate Search
+# Candidate Scroller
 
-## Your Task
+## Description
 
-TypeScript can enhance the overall development experience with React, leading to more reliable, maintainable, and scalable applications.
+The Candidate Scroller is a web application that allows employers to search for and review GitHub profiles of potential candidates. The app retrieves data from the GitHub API, enabling users to browse through candidates, save potential ones, and reject others. Saved candidates are stored locally and can be reviewed on a separate page.
 
-Your challenge is to complete a candidate search application that calls the GitHub API and renders data in the browser.
+## Features
 
-The application’s API, retrieves data from the GitHub API, has already been created. It's your job to complete the front end using TypeScript, call the application's API, and then deploy the entire application to Render.
+- Fetches GitHub user data dynamically using the GitHub API.
+- Allows users to save candidates to a local list or reject them.
+- Displays saved candidates on a separate page.
+- Persistent storage of saved candidates using `localStorage`.
+- Clean and responsive UI.
 
-* For more information on the data returned by the GitHub API, refer to the [GitHub Documentation on REST API Endpoints for Users](https://docs.github.com/en/rest/users/users).
+## Installation
 
-> **important** You'll need to create a [GitHub Personal Access Token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-fine-grained-personal-access-token) to increase the API rate limit.
+To run this project locally, follow these steps:
 
-## User Story
+\`\`\`bash
+# Clone the repository
+git clone https://github.com/AmirJT/canidatescroller.git
+cd canidatescroller
 
-```md
-AS AN employer
-I WANT a candidate search application
-SO THAT I can hire the best candidates
-```
+# Install dependencies
+npm install
 
-## Acceptance Criteria
+# Set up environment variables
+# Create a .env file in the root of the project with the following content:
+VITE_GITHUB_TOKEN=your_personal_access_token
 
-```md
-GIVEN a candidate search application
-WHEN the candidate search page loads
-THEN the information for one candidate should be displayed, including the candidate's name, username, location, avatar, email, html_url, and company
-WHEN I click the "+" button
-THEN the candidate should be saved to the list of potential candidates and the next candidate's information should be displayed
-WHEN I click the "-" button
-THEN the next candidate's information should be displayed without saving the current candidate
-WHEN there are no candidates available to review
-THEN an appropriate message should be shown indicating no more candidates are available
-WHEN the potential candidates page loads
-THEN the user should see a list of previously saved potential candidates with their name, username, location, avatar, email, html_url, and company
-WHEN the page reloads
-THEN the list of potential candidates should persist and be available for viewing
-WHEN there are no potential candidates
-THEN an appropriate message should be displayed indicating no candidates have been accepted
-WHEN I click the "-" button
-THEN the next candidate's information should be displayed without saving the current candidate
-```
+# Run the application
+npm run dev
+\`\`\`
 
-## Mock-Up
+## Deployment
 
-The following images show the web application's appearance and functionality:
+This application can be deployed using platforms like Netlify, Vercel, or Render. To deploy:
 
-![The candidate search page displays a candidate's information and allows the user to accept or reject the candidate and view a list of potential candidates.](./Assets/13-01-candidate_search_homepage.png)
+1. Ensure your `.env` file is **NOT** committed to the repository (already added to `.gitignore`).
+2. Add the `VITE_GITHUB_TOKEN` environment variable in your deployment settings.
+3. Follow the deployment guide for your chosen platform.
 
-![The potential candidates page displays a list of potential candidates and allows the user to reject a candidate.](./Assets/13-02-candidate_search_potential_candidates.png)
+## Usage
 
-## Getting Started
+1. Open the application.
+2. Browse through GitHub candidates.
+3. Use the \`+\` button to save candidates or the \`-\` button to reject them.
+4. View saved candidates on the "Saved Candidates" page.
 
-* For this app to run, you'll need to create a GitHub Personal Access Token. Follow the instructions on [creating a fine-grained personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-fine-grained-personal-access-token), with the following caveats:
+## Screenshots
 
-  * When creating your fine-grained token, leave all the default permissions. We don't need to add any additional privileges to this token, since we're only using it to search public profiles.
+### Candidate Search Page
+![Candidate Search](./Assets/13-01-candidate_search_homepage.png)
 
-  * Once your token is generated, add it to a `.env` file in the `environment` folder as `VITE_GITHUB_TOKEN`. The included `.env.EXAMPLE` file can be used as an example.
+### Saved Candidates Page
+![Saved Candidates](./Assets/13-02-candidate_search_potential_candidates.png)
 
-  * You will NOT be able to view your token after you create it. If you forget to copy it over right away, you'll need to create a new token. 
+## Technologies Used
 
-The starter code provides:
+- **React**: Front-end framework.
+- **TypeScript**: Type-safe code.
+- **Vite**: Development environment.
+- **CSS**: Styling.
+- **GitHub API**: Data source.
 
-* The application folder structure and scaffolding
 
-* Code to retrieve data from the GitHub API
 
-  * `./Develop/src/api/API.tsx`
+## Author
 
-You will need to:
-
-* Create a `.env` file with your GitHub API token
-
-* Complete code for the `CandidateSearch` and `SavedCandidates` pages
-
-* Create any necessary components
-
-* Use local storage
-
-Refer to the [GitHub Documentation on Authenticating to the REST API](https://docs.github.com/en/rest/authentication/authenticating-to-the-rest-api?apiVersion=2022-11-28#authenticating-with-a-personal-access-token) for information about creating your personal access token.
-
-Refer to the [Full-Stack Blog on deploying to Render](https://coding-boot-camp.github.io/full-stack/render/render-deployment-guide) and the [Render documentation on setting environment variables](https://docs.render.com/configure-environment-variables).
-
-## Bonus
-
-As a bonus, try to add the ability to sort and filter the list of potential candidates.
-
-## Grading Requirements
-
-> **note** If a Challenge assignment submission is marked as “0”, it is considered incomplete and won't count toward your graduation requirements. Examples of incomplete submissions include the following:
->
-> * A repository that has no code
->
-> * A repository that includes a unique name but nothing else
->
-> * A repository that includes only a README file but nothing else
->
-> * A repository that only includes starter code
-
-This Challenge is graded based on the following criteria:
-
-### Technical Acceptance Criteria: 40%
-
-* Application uses the GitHub API to retrieve user data
-
-* Application uses an interface to type user data
-
-* Application stores potential candidates in localStorage
-
-* Application is deployed to Render
-
-### Deployment: 32%
-
-* Application is deployed at live URL
-
-* Application loads with no errors
-
-* Application GitHub URL has been submitted
-
-* GitHub repository contains application code
-
-### Application Quality: 15%
-
-* Application user experience is intuitive and easy to navigate
-
-* Application user interface style is clean and polished
-
-* Application resembles the mock-up functionality provided in the Challenge instructions
-
-### Repository Quality: 13%
-
-* Repository has a unique name
-
-* Repository follows best practices for file structure and naming conventions
-
-* Repository follows best practices for class/id naming conventions, indentation, quality comments, etc.
-
-* Repository contains multiple descriptive commit messages
-
-* Repository contains a quality README file with a description, screenshot, and link to the deployed application
-
-### Bonus: +10 Points
-
-Fulfilling the following can add up to 10 points to your grade (note that the highest grade you can achieve is still 100):
-
-* Application allows sorting and filtering of potential candidates
-
-## Review
-
-You are required to submit BOTH of the following for review:
-
-* The URL of the functional, deployed application
-
-* The URL of the GitHub repository (the repository should have a unique name and include a README describing the project)
-
----
-© 2024 edX Boot Camps LLC. Confidential and Proprietary. All Rights Reserved.
+Created by **Amir Jafari**.
